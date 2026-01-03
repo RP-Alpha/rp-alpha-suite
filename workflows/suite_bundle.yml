@@ -5,134 +5,137 @@ on:
     tags:
       - 'v*.*.*'
 
+permissions:
+  contents: write
+
 jobs:
   bundle-suite:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Suite Meta-Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Create Workspace
         run: mkdir rp-alpha-suite
 
       # Core
       - name: Checkout rpa-lib
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-lib
           path: rp-alpha-suite/rpa-lib
 
       - name: Checkout rpa-notify
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-notify
           path: rp-alpha-suite/rpa-notify
       
       - name: Checkout rpa-textui
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-textui
           path: rp-alpha-suite/rpa-textui
 
       # Gameplay
       - name: Checkout rpa-police
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-police
           path: rp-alpha-suite/rpa-police
 
       - name: Checkout rpa-medic
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-ambulance
           path: rp-alpha-suite/rpa-ambulance
 
       - name: Checkout rpa-jobs
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-jobs
           path: rp-alpha-suite/rpa-jobs
 
       - name: Checkout rpa-tuning
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-tuning
           path: rp-alpha-suite/rpa-tuning
 
       - name: Checkout rpa-vehiclekeys
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-vehiclekeys
           path: rp-alpha-suite/rpa-vehiclekeys
 
       - name: Checkout rpa-garages
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-garages
           path: rp-alpha-suite/rpa-garages
 
       - name: Checkout rpa-housing
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-housing
           path: rp-alpha-suite/rpa-housing
       
       - name: Checkout rpa-fuel
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-fuel
           path: rp-alpha-suite/rpa-fuel
 
       - name: Checkout rpa-shops
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-shops
           path: rp-alpha-suite/rpa-shops
 
       - name: Checkout rpa-banking
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-banking
           path: rp-alpha-suite/rpa-banking
 
       - name: Checkout rpa-appearance
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-appearance
           path: rp-alpha-suite/rpa-appearance
 
       - name: Checkout rpa-spawn
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-spawn
           path: rp-alpha-suite/rpa-spawn
       
       - name: Checkout rpa-cityhall
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-cityhall
           path: rp-alpha-suite/rpa-cityhall
 
       - name: Checkout rpa-mdt
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-mdt
           path: rp-alpha-suite/rpa-mdt
 
       - name: Checkout rpa-dispatch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-dispatch
           path: rp-alpha-suite/rpa-dispatch
 
       - name: Checkout rpa-blips
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-blips
           path: rp-alpha-suite/rpa-blips
 
       - name: Checkout rpa-consumables
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: RP-Alpha/rpa-consumables
           path: rp-alpha-suite/rpa-consumables
@@ -150,7 +153,7 @@ jobs:
           zip -r ../RP-Alpha-Suite-${{ env.VERSION }}.zip .
 
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           files: RP-Alpha-Suite-${{ env.VERSION }}.zip
           name: RP-Alpha Suite ${{ env.VERSION }}
